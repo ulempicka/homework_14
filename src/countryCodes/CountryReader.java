@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CountryReader {
-    public static Map<String, Country> generateCountries(String fileName) throws IOException {
+    public static Map<String, Country> generateCountries(String fileName) {
         Map<String, Country> countries = new HashMap<>();
 
         try (
@@ -18,9 +18,11 @@ public class CountryReader {
             String nextLine = "";
             while ((nextLine = reader.readLine()) != null) {
                 String[] split = nextLine.split(";");
-                countries.put(split[0],new Country(split[0],split[1],Integer.parseInt(split[2])));
+                countries.put(split[0], new Country(split[0], split[1], Integer.parseInt(split[2])));
                 i++;
             }
+        } catch (IOException e) {
+            System.err.println("nie mozna odczytac pliku");
         }
         return countries;
     }

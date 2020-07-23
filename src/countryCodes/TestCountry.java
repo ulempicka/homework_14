@@ -1,20 +1,12 @@
 package countryCodes;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class TestCountry {
     public static void main(String[] args) {
         String fileName = "src\\countryCodes\\country.csv";
-        Map<String, Country> countries = new HashMap<>();
-
-        try {
-            countries = CountryReader.generateCountries(fileName);
-        } catch (IOException e) {
-            System.err.println("nie mozna odczytac pliku");
-        }
+        Map<String, Country> countries = CountryReader.generateCountries(fileName);
         System.out.println("Kody dostępnych krajów " + countries.keySet());
         System.out.println("Liczba krajów " + countries.size());
 
